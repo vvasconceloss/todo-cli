@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-function greet(name: string) {
-  console.log(`Hello, ${name}!`);
-}
+import { Command } from "commander";
+const program = new Command();
 
-greet("John Doe");
+program.name("todo-cli").description("A simple todo list CLI").version("1.0.0");
+
+program.parse();
