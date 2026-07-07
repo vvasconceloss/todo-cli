@@ -1,0 +1,36 @@
+{
+  "name": "todo-cli",
+  "version": "1.0.0",
+  "description": "A simple CLI for a to-do list ",
+  "main": "src/index.ts",
+  "bin": {
+    "todo-cli": "src/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node ."
+  },
+  "keywords": [
+    "CLI",
+    "todo",
+    "task",
+    "list"
+  ],
+  "author": {
+    "name": "Victor Vasconcelos",
+    "email": "vvasconcelos.dev@gmail.com"
+  },
+  "license": "MIT",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.3.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "typescript": "^6.0.3"
+  }
+}
