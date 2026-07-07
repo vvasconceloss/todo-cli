@@ -4,7 +4,7 @@
   "description": "A simple CLI for a to-do list ",
   "main": "src/index.ts",
   "bin": {
-    "todo-cli": "src/index.js"
+    "todo-cli": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -32,5 +32,8 @@
   "devDependencies": {
     "@types/node": "^26.1.0",
     "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "commander": "^15.0.0"
   }
 }
