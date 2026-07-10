@@ -1,4 +1,4 @@
-import { Task } from "../models/todo";
+import type { Task } from "../models/todo.js";
 
 class TodoService {
   add(title: string): void {}
@@ -9,3 +9,5 @@ class TodoService {
 
   remove(id: number): void {}
 }
+
+export default TodoService;
