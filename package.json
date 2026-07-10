@@ -34,6 +34,7 @@
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "commander": "^15.0.0"
+    "commander": "^15.0.0",
+    "figlet": "^1.11.0"
   }
 }
