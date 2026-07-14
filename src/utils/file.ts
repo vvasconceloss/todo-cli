@@ -1,7 +1,9 @@
-import fs from "node:fs";
+import path from "node:path";
 import { existsSync } from "node:fs";
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
-const FILE_PATH: string = "./src/data/todo.json";
+const DATA_DIR: string = path.join(process.cwd(), "data");
+const FILE_PATH: string = path.join(DATA_DIR, "todo.json");
 
 function fileExists(): boolean {
   return existsSync(FILE_PATH);
@@ -9,16 +11,27 @@ function fileExists(): boolean {
 
 async function createFile(): Promise<void> {
   try {
-    fs.writeFile(FILE_PATH, "{}", (err) => {
-      console.error("Failed to create file:", err);
-    });
-
+    await writeFile(FILE_PATH, "{}");
     console.log("JSON file created successfully");
   } catch (err) {
     console.error("Failed to create file:", err);
   }
 }
 
+export async function readFileContent(): Promise<object> {
+  try {
+    let fileContent = await readFile(FILE_PATH, { encoding: 'utf8' });
+    return JSON.parse(fileContent);
+  } catch (err) {
+    console.error("Failed to read file:", err);
+    return {}
+  }
+}
+
 export async function setupFile(): Promise<void> {
+  await mkdir(DATA_DIR, { recursive: true });
+
   if (!fileExists()) await createFile();
+
+  const todoData: object = await readFileContent();
 }
