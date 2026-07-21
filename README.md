@@ -18,7 +18,7 @@ This project is intentionally small. Its purpose is not to build the most featur
 Example:
 
 ```bash
-todo-cli add "Study Node.js"
+todo-cli add --title "Study Node.js"
 todo-cli list
 todo-cli remove 1
 ```
@@ -147,7 +147,7 @@ pnpm run dev
 ## Add a task
 
 ```bash
-todo-cli add "Read Clean Code"
+todo-cli add --title "Read Clean Code"
 ```
 
 ---
