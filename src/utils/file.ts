@@ -29,6 +29,16 @@ export async function readFileContent(): Promise<TodoData> {
   }
 }
 
+export async function writeToFile(content: string): Promise<void> {
+  try {
+    await writeFile(FILE_PATH, content);
+    return;
+  } catch (err) {
+    console.error("Failed to write in file:", err);
+    return;
+  }
+}
+
 export async function getNextId(): Promise<number> {
   const data = await readFileContent();
   const tasks = data.tasks;
