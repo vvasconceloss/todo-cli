@@ -3,3 +3,7 @@ export interface Task {
   title: string;
   completed: boolean;
 }
+
+export interface TodoData {
+  tasks: Task[];
+}
