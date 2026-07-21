@@ -28,6 +28,13 @@ export async function readFileContent(): Promise<object> {
   }
 }
 
+export async function getNextId(): Promise<number> {
+  const data = await readFileContent() as Record<string, { id: number }[]>;
+  const tasks = data.tasks ?? [];
+
+  return tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1;
+}
+
 export async function setupFile(): Promise<void> {
   await mkdir(DATA_DIR, { recursive: true });
 
