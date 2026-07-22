@@ -8,5 +8,6 @@ export function addCommand(program: Command, todoService: TodoService) {
     .requiredOption('--title <title>', 'set the task title')
     .action((options) => {
       todoService.add(options.title);
+      console.log("> The task has been successfully added!");
     });
 }
