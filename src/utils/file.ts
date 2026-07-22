@@ -13,7 +13,7 @@ function fileExists(): boolean {
 async function createFile(): Promise<void> {
   try {
     await writeFile(FILE_PATH, JSON.stringify({ tasks: [] }));
-    console.log("JSON file created successfully");
+    console.log("> JSON file created successfully");
   } catch (err) {
     console.error("Failed to create file:", err);
   }
@@ -22,9 +22,21 @@ async function createFile(): Promise<void> {
 export async function readFileContent(): Promise<TodoData> {
   try {
     let fileContent = await readFile(FILE_PATH, { encoding: 'utf8' });
+
+    if (!fileContent.trim()) {
+      await createFile();
+      return { tasks: [] };
+    }
+
     return JSON.parse(fileContent) as TodoData;
   } catch (err) {
-    console.error("Failed to read file:", err);
+    if (err instanceof SyntaxError) {
+      console.warn("Corrupted JSON detected. Resetting file...");
+      await createFile();
+    } else {
+      console.error("Failed to read file:", err);
+    }
+
     return { tasks: [] };
   }
 }
